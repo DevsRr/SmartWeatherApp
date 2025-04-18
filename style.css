@@ -1,0 +1,130 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    color: #1e1e1e;
+}
+
+body {
+    background: linear-gradient(145deg, #f0f4f8, #dfe6ed);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+.cyberpunk-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.location-date-container,
+.weather-summary-container,
+.weather-conditions-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weather-summary-img {
+    width: 100px;
+    height: 100px;
+}
+
+.weather-summary-info {
+    text-align: right;
+}
+
+.condition-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.condition-item span {
+    font-size: 24px;
+    color: #888;
+}
+
+.condition-info h5 {
+    font-weight: 400;
+    color: #555;
+}
+
+.forecast-label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 20px;
+}
+
+.forecast-items-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding: 10px 0;
+}
+
+.forecast-item {
+    min-width: 80px;
+    background: #f9fafc;
+    border: 1px solid #e0e6ed;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease;
+}
+
+.forecast-item:hover {
+    transform: translateY(-4px);
+}
+
+.forecast-item-img {
+    width: 36px;
+    height: 36px;
+}
+
+.forecast-item-date {
+    font-size: 12px;
+    color: #666;
+}
+
+.forecast-item-temp {
+    font-size: 14px;
+    color: #222;
+}
+
+.section-message {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.section-message img {
+    width: 150px;
+    margin-bottom: 15px;
+}
