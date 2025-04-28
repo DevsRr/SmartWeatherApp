@@ -1,4 +1,3 @@
-
 const countryTxt = document.querySelector('.country-txt')
 const tempTxt = document.querySelector('.temp-txt')
 const conditionTxt = document.querySelector('.condition-txt')
@@ -6,16 +5,36 @@ const humidityValueTxt = document.querySelector('.humidity-value-txt')
 const windValueTxt = document.querySelector('.wind-value-txt')
 const weatherSummaryImg = document.querySelector('.weather-summary-img')
 const currentDateTxt = document.querySelector('.current-date-txt')
+const currentTimeTxt = document.querySelector('.current-time-txt')
 const forecastItemsContainer = document.querySelector('.forecast-items-container')
 const weatherInfoSection = document.querySelector('.weather-info')
 const notFoundSection = document.querySelector('.not-found')
 const searchCitySection = document.querySelector('.search-city')
+
+const cityInput = document.querySelector('.city-input')
+const searchBtn = document.querySelector('.search-btn')
 
 const apiKey = '64aff95fea33adb056017a0dd1116b5a'
 const defaultCity = 'Caloocan'
 
 document.addEventListener('DOMContentLoaded', () => {
     updateWeatherInfo(defaultCity)
+})
+
+searchBtn.addEventListener('click', () => {
+    const city = cityInput.value.trim()
+    if (city) {
+        updateWeatherInfo(city)
+    }
+})
+
+cityInput.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') {
+        const city = cityInput.value.trim()
+        if (city) {
+            updateWeatherInfo(city)
+        }
+    }
 })
 
 async function getFetchData(endPoint, city) {
@@ -30,38 +49,65 @@ function getCurrentDate() {
     return currentDate.toLocaleDateString('en-GB', options)
 }
 
+function getCurrentTime() {
+    const now = new Date()
+    const options = { hour: '2-digit', minute: '2-digit', hour12: true }
+    return now.toLocaleTimeString('en-US', options)
+}
+
 async function updateWeatherInfo(city) {
     const weatherData = await getFetchData('weather', city)
+    const forecastsData = await getFetchData('forecast', city)
 
-    if (weatherData.cod != 200) {
+    if (weatherData.cod != 200 || forecastsData.cod != "200") {
         showDisplaySection(notFoundSection)
         return
     }
 
-    const {
-        name: country,
-        main: { temp, humidity },
-        weather: [{ main, icon }],
-        wind: { speed }
-    } = weatherData
-
-    countryTxt.textContent = country
-    tempTxt.textContent = `${Math.round(temp)} °C`
-    conditionTxt.textContent = main
-    humidityValueTxt.textContent = `${humidity}%`
-    windValueTxt.textContent = `${speed} M/s`
+    // Set location and current date/time
+    countryTxt.textContent = weatherData.name
     currentDateTxt.textContent = getCurrentDate()
-    weatherSummaryImg.src = `https://openweathermap.org/img/wn/${icon}@2x.png`
+    currentTimeTxt.textContent = getCurrentTime()
 
-    await updateForecastsInfo(city)
+    // Find the nearest forecast time from now
+    const now = new Date()
+    const nearestForecast = forecastsData.list.find(forecast => {
+        const forecastTime = new Date(forecast.dt_txt)
+        return forecastTime > now
+    })
+
+    if (nearestForecast) {
+        tempTxt.textContent = `${Math.round(nearestForecast.main.temp)} °C`
+        conditionTxt.textContent = nearestForecast.weather[0].main
+        weatherSummaryImg.src = `https://openweathermap.org/img/wn/${nearestForecast.weather[0].icon}@2x.png`
+        humidityValueTxt.textContent = `${nearestForecast.main.humidity}%`
+        windValueTxt.textContent = `${nearestForecast.wind.speed} M/s`
+    } else {
+        // fallback if forecast is missing
+        tempTxt.textContent = `${Math.round(weatherData.main.temp)} °C`
+        conditionTxt.textContent = weatherData.weather[0].main
+        weatherSummaryImg.src = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
+        humidityValueTxt.textContent = `${weatherData.main.humidity}%`
+        windValueTxt.textContent = `${weatherData.wind.speed} M/s`
+    }
+
+    await updateForecastsInfo(forecastsData)
+    changeThemeBasedOnTime()
     showDisplaySection(weatherInfoSection)
 }
 
-async function updateForecastsInfo(city) {
-    const forecastsData = await getFetchData('forecast', city)
+async function updateForecastsInfo(forecastsData) {
     forecastItemsContainer.innerHTML = ''
 
-    forecastsData.list.slice(0, 8).forEach(weatherData => {
+    const now = new Date()
+
+    // Only show forecasts in the future
+    const upcomingForecasts = forecastsData.list.filter(forecast => {
+        const forecastTime = new Date(forecast.dt_txt)
+        return forecastTime > now
+    }).slice(0, 8) // Limit to 8 upcoming forecasts
+
+    upcomingForecasts.forEach(weatherData => {
         const {
             dt_txt: dateTime,
             weather: [{ icon }],
@@ -70,7 +116,8 @@ async function updateForecastsInfo(city) {
 
         const time = new Date(dateTime).toLocaleTimeString('en-US', {
             hour: '2-digit',
-            minute: '2-digit'
+            minute: '2-digit',
+            hour12: true
         })
 
         const forecastItem = `
@@ -88,4 +135,13 @@ function showDisplaySection(section) {
     [weatherInfoSection, searchCitySection, notFoundSection]
         .forEach(sec => sec.style.display = 'none')
     section.style.display = 'flex'
+}
+
+function changeThemeBasedOnTime() {
+    const currentHour = new Date().getHours()
+    if (currentHour >= 18 || currentHour < 6) {
+        document.body.classList.add('night-theme')
+    } else {
+        document.body.classList.remove('night-theme')
+    }
 }
