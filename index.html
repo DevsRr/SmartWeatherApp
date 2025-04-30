@@ -17,10 +17,13 @@
             <button class="search-btn">
                 <span class="material-symbols-outlined">search</span>
             </button>
+            <span class="clear-btn" style="display: none;">&times;</span>
         </div>
     </nav>
 
     <main class="main-container">
+        <!-- Loader -->
+        <div class="loader" style="display: none;"></div>
 
         <section class="weather-info" style="display: none;">
             <div class="location-date-container">
@@ -62,7 +65,12 @@
 
             <h4 class="forecast-label">Hourly Forecast</h4>
             <div class="forecast-items-container">
-                <!-- Forecast items will be generated here -->
+            
+            </div>
+
+            <h4 class="forecast-label">Daily Forecast</h4>
+            <div class="daily-forecast-items-container">
+          
             </div>
         </section>
 
