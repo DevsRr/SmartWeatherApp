@@ -14,6 +14,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden; /* Prevent body from scrolling */
 }
 
 .main-container {
@@ -23,8 +24,9 @@ body {
     border-radius: 16px;
     padding: 30px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    overflow-y: auto;
+    overflow-y: auto; /* Scrollable content inside the card */
     max-height: 90vh;
+    margin-top: 200px;
 }
 
 .weather-info {
@@ -120,7 +122,6 @@ body {
     margin-bottom: 15px;
 }
 
-/* NIGHT THEME */
 .night-theme {
     background: linear-gradient(145deg, #0d1b2a, #1b263b);
 }
@@ -149,8 +150,9 @@ body {
 }
 
 .night-theme .section-message img {
-    filter: brightness(0.8);
+    filter: brightness(1.0);
 }
+
 .navbar {
     position: fixed;
     top: 0;
@@ -209,8 +211,61 @@ body {
     background-color: #3949ab;
 }
 
-/* adjust main-container because of fixed navbar */
-.main-container {
-    margin-top: 80px; /* leave space for the navbar */
+.daily-forecast-items-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding: 10px 0;
 }
 
+.daily-forecast-item {
+    min-width: 100px;
+    background: #f9fafc;
+    border: 1px solid #e0e6ed;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease;
+}
+
+.daily-forecast-item:hover {
+    transform: translateY(-4px);
+}
+
+.daily-forecast-item-img {
+    width: 36px;
+    height: 36px;
+}
+
+.daily-forecast-item-date {
+    font-size: 12px;
+    color: #666;
+}
+
+.daily-forecast-item-temp {
+    font-size: 14px;
+    color: #222;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    width: 90%;
+    max-width: 600px;
+    height: auto;
+    max-height: 700px;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
