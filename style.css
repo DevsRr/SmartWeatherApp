@@ -269,3 +269,446 @@ html, body {
     padding: 20px;
     box-sizing: border-box;
 }
+.live-monitoring-btn {
+    background-color: #43a047;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.live-monitoring-btn:hover {
+    background-color: #2e7d32;
+}
+
+.night-theme .live-monitoring-btn {
+    background-color: #66bb6a;
+}
+
+.night-theme .live-monitoring-btn:hover {
+    background-color: #388e3c;
+}
+
+.more-options {
+    position: relative;
+    margin-left: 10px;
+}
+
+.more-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-size: 24px;
+}
+
+.more-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.night-theme .more-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.more-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 20;
+    min-width: 150px;
+    padding: 10px 0;
+}
+
+.more-menu a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.more-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+.night-theme .more-menu {
+    background-color: #2c3e50;
+    border-color: #34495e;
+}
+
+.night-theme .more-menu a {
+    color: white;
+}
+
+.night-theme .more-menu a:hover {
+    background-color: #3e5066;
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    color: #1e1e1e;
+}
+
+body {
+    background: linear-gradient(145deg, #f0f4f8, #dfe6ed);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Prevent body from scrolling */
+}
+
+.main-container {
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    overflow-y: auto; /* Scrollable content inside the card */
+    max-height: 90vh;
+    margin-top: 200px;
+}
+
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.location-date-container,
+.weather-summary-container,
+.weather-conditions-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weather-summary-img {
+    width: 100px;
+    height: 100px;
+}
+
+.weather-summary-info {
+    text-align: right;
+}
+
+.condition-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.condition-item span {
+    font-size: 24px;
+    color: #888;
+}
+
+.condition-info h5 {
+    font-weight: 400;
+    color: #555;
+}
+
+.forecast-label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 20px;
+}
+
+.forecast-items-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding: 10px 0;
+}
+
+.forecast-item {
+    min-width: 80px;
+    background: #f9fafc;
+    border: 1px solid #e0e6ed;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease;
+}
+
+.forecast-item:hover {
+    transform: translateY(-4px);
+}
+
+.forecast-item-img {
+    width: 36px;
+    height: 36px;
+}
+
+.forecast-item-date {
+    font-size: 12px;
+    color: #666;
+}
+
+.forecast-item-temp {
+    font-size: 14px;
+    color: #222;
+}
+
+.section-message {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.section-message img {
+    width: 150px;
+    margin-bottom: 15px;
+}
+
+.night-theme {
+    background: linear-gradient(145deg, #0d1b2a, #1b263b);
+}
+
+.night-theme .main-container {
+    background: #1e1e2f;
+    color: #ffffff;
+}
+
+.night-theme .main-container * {
+    color: #ffffff;
+}
+
+.night-theme .forecast-item {
+    background: #2c3e50;
+    border: 1px solid #34495e;
+}
+
+.night-theme .forecast-item-date,
+.night-theme .forecast-item-temp {
+    color: #ffffff;
+}
+
+.night-theme .condition-item span {
+    color: #b0bec5;
+}
+
+.night-theme .section-message img {
+    filter: brightness(1.0);
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 10;
+    padding: 10px 20px;
+}
+
+.night-theme .navbar {
+    background: #1e1e2f;
+}
+
+.navbar-container {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.city-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.search-btn {
+    background-color: #4a90e2;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #357ABD;
+}
+
+.search-btn .material-symbols-outlined {
+    color: white;
+}
+
+.night-theme .search-btn {
+    background-color: #5c6bc0;
+}
+
+.night-theme .search-btn:hover {
+    background-color: #3949ab;
+}
+
+.daily-forecast-items-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding: 10px 0;
+}
+
+.daily-forecast-item {
+    min-width: 100px;
+    background: #f9fafc;
+    border: 1px solid #e0e6ed;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease;
+}
+
+.daily-forecast-item:hover {
+    transform: translateY(-4px);
+}
+
+.daily-forecast-item-img {
+    width: 36px;
+    height: 36px;
+}
+
+.daily-forecast-item-date {
+    font-size: 12px;
+    color: #666;
+}
+
+.daily-forecast-item-temp {
+    font-size: 14px;
+    color: #222;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    width: 90%;
+    max-width: 600px;
+    height: auto;
+    max-height: 700px;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+.live-monitoring-btn {
+    background-color: #43a047;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.live-monitoring-btn:hover {
+    background-color: #2e7d32;
+}
+
+.night-theme .live-monitoring-btn {
+    background-color: #66bb6a;
+}
+
+.night-theme .live-monitoring-btn:hover {
+    background-color: #388e3c;
+}
+
+.more-options {
+    position: relative;
+    margin-left: 10px;
+}
+
+.more-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-size: 24px;
+}
+
+.more-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.night-theme .more-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.more-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 20;
+    min-width: 150px;
+    padding: 10px 0;
+}
+
+.more-menu a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.more-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+.night-theme .more-menu {
+    background-color: #2c3e50;
+    border-color: #34495e;
+}
+
+.night-theme .more-menu a {
+    color: white;
+}
+
+.night-theme .more-menu a:hover {
+    background-color: #3e5066;
+}
