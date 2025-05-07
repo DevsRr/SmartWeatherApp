@@ -3,52 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Live Monitoring Dashboard</title>
+  <title>Live Monitoring</title>
   <link rel="stylesheet" href="livestyle.css"/>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="dashboard">
-    <div class="header">Live Monitoring</div>
-    <div class="cards">
-      <div class="card">
-        <h3>Flood Detection</h3>
-        <div class="circular-progress">
-          <div class="circle-background"></div>
-          <div class="circle-foreground"></div>
-          <div class="circle-text">75%</div>
-        </div>
+    <div class="header">Live Monitoring Dashboard</div>
+
+    <div class="progress-bars">
+      <div class="progress-item">
+        <svg class="progress-circle" width="120" height="120">
+          <circle cx="60" cy="60" r="50" stroke="#ccc" stroke-width="10" fill="none"/>
+          <circle id="floodCircle" cx="60" cy="60" r="50" stroke="#3498db" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </svg>
+        <h4>Flood Level</h4>
+        <p id="floodValue">75%</p>
       </div>
-      <div class="card">
-        <h3>Air Quality Index</h3>
-        <div class="circular-progress">
-          <div class="circle-background"></div>
-          <div class="circle-foreground"></div>
-          <div class="circle-text">58</div>
-        </div>
+
+      <div class="progress-item">
+        <svg class="progress-circle" width="120" height="120">
+          <circle cx="60" cy="60" r="50" stroke="#ccc" stroke-width="10" fill="none"/>
+          <circle id="aqiCircle" cx="60" cy="60" r="50" stroke="#2ecc71" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </svg>
+        <h4>Air Quality</h4>
+        <p id="aqiValue">Good</p>
       </div>
-      <div class="card">
-        <h3>Temperature</h3>
-        <div class="circular-progress">
-          <div class="circle-background"></div>
-          <div class="circle-foreground"></div>
-          <div class="circle-text">28°C</div>
-        </div>
+
+      <div class="progress-item">
+        <svg class="progress-circle" width="120" height="120">
+          <circle cx="60" cy="60" r="50" stroke="#ccc" stroke-width="10" fill="none"/>
+          <circle id="tempCircle" cx="60" cy="60" r="50" stroke="#e67e22" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </svg>
+        <h4>Temperature</h4>
+        <p id="tempValue">32°C</p>
       </div>
-      <div class="card">
-        <h3>Humidity</h3>
-        <div class="circular-progress">
-          <div class="circle-background"></div>
-          <div class="circle-foreground"></div>
-          <div class="circle-text">68%</div>
-        </div>
+
+      <div class="progress-item">
+        <svg class="progress-circle" width="120" height="120">
+          <circle cx="60" cy="60" r="50" stroke="#ccc" stroke-width="10" fill="none"/>
+          <circle id="humidityCircle" cx="60" cy="60" r="50" stroke="#9b59b6" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </svg>
+        <h4>Humidity</h4>
+        <p id="humidityValue">65%</p>
       </div>
     </div>
-    <div class="chart-container">
-      <!-- Make sure to use a specific ID for the canvas -->
-      <canvas id="seismicGraph" width="600" height="400"></canvas>
+
+    <div class="chart-section">
+      <h3 class="chart-title">Seismic Activity (Earthquake Detection)</h3>
+      <div class="chart-container">
+        <canvas id="pmChart"></canvas>
+      </div>
     </div>
   </div>
+
   <script src="livescript.js"></script>
 </body>
 </html>
