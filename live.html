@@ -8,44 +8,57 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+  <div class="navbar">
+    <div class="nav-title">Live Monitoring</div>
+    <a href="index.html" class="nav-button">Weather Forecast</a>
+  </div>
+
   <div class="dashboard">
     <div class="header">Live Monitoring Dashboard</div>
 
     <div class="progress-bars">
       <div class="progress-item">
-        <svg class="progress-circle" width="120" height="120">
-          <circle cx="60" cy="60" r="50" stroke="#ccc" stroke-width="10" fill="none"/>
-          <circle id="floodCircle" cx="60" cy="60" r="50" stroke="#3498db" stroke-width="10" fill="none" stroke-linecap="round"/>
-        </svg>
+        <div class="progress-wrapper">
+          <svg class="progress-circle" width="120" height="120">
+            <circle cx="60" cy="60" r="50" stroke="#ccc" stroke-width="10" fill="none"/>
+            <circle id="floodCircle" cx="60" cy="60" r="50" stroke="#3498db" stroke-width="10" fill="none" stroke-linecap="round"/>
+          </svg>
+          <div class="progress-text" id="floodText">75%</div>
+        </div>
         <h4>Flood Level</h4>
-        <p id="floodValue">75%</p>
       </div>
 
       <div class="progress-item">
-        <svg class="progress-circle" width="120" height="120">
-          <circle cx="60" cy="60" r="50" stroke="#ccc" stroke-width="10" fill="none"/>
-          <circle id="aqiCircle" cx="60" cy="60" r="50" stroke="#2ecc71" stroke-width="10" fill="none" stroke-linecap="round"/>
-        </svg>
+        <div class="progress-wrapper">
+          <svg class="progress-circle" width="120" height="120">
+            <circle cx="60" cy="60" r="50" stroke="#ccc" stroke-width="10" fill="none"/>
+            <circle id="aqiCircle" cx="60" cy="60" r="50" stroke="#2ecc71" stroke-width="10" fill="none" stroke-linecap="round"/>
+          </svg>
+          <div class="progress-text" id="aqiText">Good</div>
+        </div>
         <h4>Air Quality</h4>
-        <p id="aqiValue">Good</p>
       </div>
 
       <div class="progress-item">
-        <svg class="progress-circle" width="120" height="120">
-          <circle cx="60" cy="60" r="50" stroke="#ccc" stroke-width="10" fill="none"/>
-          <circle id="tempCircle" cx="60" cy="60" r="50" stroke="#e67e22" stroke-width="10" fill="none" stroke-linecap="round"/>
-        </svg>
+        <div class="progress-wrapper">
+          <svg class="progress-circle" width="120" height="120">
+            <circle cx="60" cy="60" r="50" stroke="#ccc" stroke-width="10" fill="none"/>
+            <circle id="tempCircle" cx="60" cy="60" r="50" stroke="#e67e22" stroke-width="10" fill="none" stroke-linecap="round"/>
+          </svg>
+          <div class="progress-text" id="tempText">32°C</div>
+        </div>
         <h4>Temperature</h4>
-        <p id="tempValue">32°C</p>
       </div>
 
       <div class="progress-item">
-        <svg class="progress-circle" width="120" height="120">
-          <circle cx="60" cy="60" r="50" stroke="#ccc" stroke-width="10" fill="none"/>
-          <circle id="humidityCircle" cx="60" cy="60" r="50" stroke="#9b59b6" stroke-width="10" fill="none" stroke-linecap="round"/>
-        </svg>
+        <div class="progress-wrapper">
+          <svg class="progress-circle" width="120" height="120">
+            <circle cx="60" cy="60" r="50" stroke="#ccc" stroke-width="10" fill="none"/>
+            <circle id="humidityCircle" cx="60" cy="60" r="50" stroke="#9b59b6" stroke-width="10" fill="none" stroke-linecap="round"/>
+          </svg>
+          <div class="progress-text" id="humidityText">65%</div>
+        </div>
         <h4>Humidity</h4>
-        <p id="humidityValue">65%</p>
       </div>
     </div>
 
